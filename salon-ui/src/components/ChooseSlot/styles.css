@@ -1,0 +1,13 @@
+.ChooseSlot-form {
+  margin-bottom: 10px;
+}
+
+.ChooseSlot-date-picker {
+  width: 400px;
+  display: inline-block;
+}
+
+.ChooseSlot-button {
+  display: inline-block;
+  margin-left: 10px;
+}

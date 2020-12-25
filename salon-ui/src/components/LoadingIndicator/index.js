@@ -4,13 +4,13 @@ import './styles.css';
 
 const LoadingIndicator = () => {
   return (
-    <div>
+    <>
       <Spinner
-        className="Spinner"
+        className="LoadingIndicator-spinner"
         animation="border"
         role="status"
       />
-    </div>
+    </>
   );
 };
 

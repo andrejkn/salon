@@ -1,40 +1,23 @@
-import Card from 'react-bootstrap/Card';
-import CardColumns from 'react-bootstrap/CardColumns'
-import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router-dom';
 
-import './styles.css'
+import ClickableCards from '../ClickableCards';
 
-const ChooseService = ({ availableSlots }) => {
+const ChooseService = ({ serviceDetails }) => {
+  const history = useHistory();
+
   return (
-    <CardColumns>
-      {
-        availableSlots?.map((slot) => (
-          <div key={`slot_${slot.id}`}>
-            <Card className="ChooseService-card">
-              <Card.Header>
-                <h4>{slot.name}</h4>
-              </Card.Header>
-              <Card.Body>
-                <Card.Title>
-                  <h2>${slot.price}</h2>
-                </Card.Title>
-                <Card.Text>
-                  {slot.description}
-                  <br />
-                  {slot.timeInMinutes} Minutes
-                </Card.Text>
-                <Button
-                  className="ChooseService-book-now-button"
-                  variant="outline-primary"
-                >
-                  Book Now
-                </Button>
-              </Card.Body>
-            </Card>
-          </div>
-        ))
+    <ClickableCards
+      cards={
+        serviceDetails?.map((service) => ({
+          header: service.name,
+          title: `$${service.price}`,
+          content: service.description,
+          altContent: `${service.timeInMinutes} Minutes`,
+          onClickHandler: () => history.push(`/chooseSlot/${service.id}/${service.name}`),
+          buttonTitle: 'Book Now',
+        }))
       }
-    </CardColumns>
+    />
   );
 };
 
