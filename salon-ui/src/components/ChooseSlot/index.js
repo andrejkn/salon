@@ -1,3 +1,5 @@
+import React, { useEffect } from 'react';
+
 import { useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -8,8 +10,15 @@ import ClickableCards from '../ClickableCards';
 
 import './styles.css';
 
-const ChooseSlot = ({ formattedDate, availableSlots, handleButtonClick, handleDateChange }) => {
+const ChooseSlot = ({
+    formattedDate,
+    availableSlots,
+    handleButtonClick,
+    handleDateChange,
+    reset
+}) => {
   const { serviceId, serviceName } = useParams();
+
   return (
     <>
       <Form className="ChooseSlot-form">
@@ -34,12 +43,14 @@ const ChooseSlot = ({ formattedDate, availableSlots, handleButtonClick, handleDa
       {
         availableSlots ? (
           <ClickableCards
-            cards={availableSlots.map((slot) => ({
-              header: serviceName,
-              title: slot.stylistName,
-              content: `Slot Time ${moment(slot.slotFor).format('h:ss a')}`,
-              buttonTitle: 'Book This Slot'
-            }))}
+            cards={availableSlots
+              .map((slot) => ({
+                header: serviceName,
+                title: slot.stylistName,
+                content: `Slot Time ${moment(slot.slotFor).format('h:ss a')}`,
+                buttonTitle: 'Book This Slot'
+              }))
+            }
           />
         ) : null
       }

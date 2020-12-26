@@ -1,11 +1,11 @@
 import Card from 'react-bootstrap/Card';
-import CardColumns from 'react-bootstrap/CardColumns'
+import CardGroup from 'react-bootstrap/CardGroup'
 import Button from 'react-bootstrap/Button';
 
 import './styles.css'
 
 const ClickableCards = ({ cards }) => (
-  <CardColumns>
+  <CardGroup>
     {
       cards.map(({ header, title, content, altContent, onClickHandler, buttonTitle }, index) => (
         <div key={`clickable-card_${index}`}>
@@ -23,7 +23,7 @@ const ClickableCards = ({ cards }) => (
               {altContent}
             </Card.Text>
             <Button
-              className="ChooseService-book-now-button"
+              className="ClickableCards-button"
               variant="outline-primary"
               onClick={onClickHandler}
             >
@@ -34,7 +34,7 @@ const ClickableCards = ({ cards }) => (
         </div>
       ))
     }
-  </CardColumns>
+  </CardGroup>
 );
 
 export default ClickableCards;

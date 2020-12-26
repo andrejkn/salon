@@ -1,7 +1,9 @@
 .ClickableCards-card {
   height: 300px;
+  width: 250px;
+  margin: 5px;
 }
 
-.ClickableCards-book-now-button {
+.ClickableCards-button {
   width: 100%;
 }
