@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react';
-
 import { useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -43,14 +41,12 @@ const ChooseSlot = ({
       {
         availableSlots ? (
           <ClickableCards
-            cards={availableSlots
-              .map((slot) => ({
-                header: serviceName,
-                title: slot.stylistName,
-                content: `Slot Time ${moment(slot.slotFor).format('h:ss a')}`,
-                buttonTitle: 'Book This Slot'
-              }))
-            }
+            cards={availableSlots.map((slot) => ({
+              header: serviceName,
+              title: slot.stylistName,
+              content: `Slot Time ${moment(slot.slotFor).format('h:ss a')}`,
+              buttonTitle: 'Book This Slot'
+            }))}
           />
         ) : null
       }
