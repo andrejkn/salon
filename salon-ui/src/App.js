@@ -27,9 +27,9 @@ const App = () => {
   const [notificationMessage, setNotificationMessage] = useState(null);
   const [hasError, setHasErrorState] = useState(false);
 
-  const loadAvailableSlots = (serviceId) => {
+  const loadAvailableSlots = (serviceId, formattedDate) => {
     setIsDataLoadedState(false);
-    retrieveAvailableSlots(serviceId, availableSlotsDate).subscribe({
+    retrieveAvailableSlots(serviceId, formattedDate).subscribe({
       next: (data) => {
         if (data.error) {
           setNotificationMessage(`${data.message}. Failed to load available slots!`);
@@ -99,7 +99,7 @@ const App = () => {
             >
               <ChooseSlot
                 availableSlots={availableSlots}
-                handleButtonClick={loadAvailableSlots}
+                handleButtonClick={(serviceId) => loadAvailableSlots(serviceId, availableSlotsDate)}
                 handleDateChange={setAvailableSlotsDate}
               />
             </Route>

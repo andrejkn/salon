@@ -13,7 +13,9 @@ public interface SlotRepository extends CrudRepository<Slot, Long> {
             "left outer join salon_service_detail ssd on sas.available_services_id = ssd.id\n" +
             "where slot.status = 0\n" +
             "  and sas.available_services_id = :serviceId\n" +
-            "  and date_trunc('day', slot.slot_for) = to_date(:formattedDate, 'YYYY-MM-DD')",
+            "  and now() < slot_for" +
+            "  and date_trunc('day', slot.slot_for) = to_date(:formattedDate, 'YYYY-MM-DD')\n" +
+            "order by slot_for",
             nativeQuery = true)
     List<Slot> findAvailableSlotsByServiceIdAndSlotFor(@Param("serviceId") Long serviceId,
                                                        @Param("formattedDate") String formattedDate);

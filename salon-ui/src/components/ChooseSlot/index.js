@@ -8,8 +8,15 @@ import ClickableCards from '../ClickableCards';
 
 import './styles.css';
 
-const ChooseSlot = ({ formattedDate, availableSlots, handleButtonClick, handleDateChange }) => {
+const ChooseSlot = ({
+    formattedDate,
+    availableSlots,
+    handleButtonClick,
+    handleDateChange,
+    reset
+}) => {
   const { serviceId, serviceName } = useParams();
+
   return (
     <>
       <Form className="ChooseSlot-form">
