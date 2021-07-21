@@ -13,7 +13,6 @@ const ChooseSlot = ({
     availableSlots,
     handleButtonClick,
     handleDateChange,
-    reset
 }) => {
   const { serviceId, serviceName } = useParams();
 

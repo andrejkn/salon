@@ -5,3 +5,12 @@
 .App-container {
   margin: 50px 20% 0 20%;
 }
+
+.App-brand-link {
+  color: white;
+}
+
+.App-brand-link:hover {
+  color: #999;
+}
+

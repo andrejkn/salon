@@ -1,6 +1,8 @@
 package com.example.salonapi;
 
-import lombok.*;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

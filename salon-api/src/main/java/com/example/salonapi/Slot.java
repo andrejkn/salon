@@ -22,6 +22,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 public class Slot {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,6 +41,14 @@ public class Slot {
 
     LocalDateTime lockedAt;
     LocalDateTime confirmedAt;
+
+    public void setStatusToLocked() {
+        this.setStatus(SlotStatus.LOCKED);
+    }
+
+    public void setStatusToConfirmed() {
+        this.setStatus(SlotStatus.CONFIRMED);
+    }
 }
 
 enum  SlotStatus {

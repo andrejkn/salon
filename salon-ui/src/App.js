@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import {
   BrowserRouter as Router,
+  Link,
   Route
 } from 'react-router-dom';
 
@@ -63,27 +64,29 @@ const App = () => {
   return (
     <div className="App">
       <>
-        <Navbar bg="dark" variant="dark" expand="lg">
-          <Navbar.Brand>
-            AR Salon and Day Spa Services
-          </Navbar.Brand>
-        </Navbar>
-        {
-          notificationMessage ? (
-            <Notification
-              isFailure={hasError}
-              message={notificationMessage}
-              handleOnClose={() => setNotificationMessage(null)}
-            />
-          ) : null
-        }
-        {
-          !isDataLoaded ? (
-            <LoadingIndicator />
-          ) : null
-        }
-        <div className="App-container">
-          <Router>
+        <Router>
+          <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar.Brand>
+              <Link to="/" className="App-brand-link">
+                AR Salon and Day Spa Services
+              </Link>
+            </Navbar.Brand>
+          </Navbar>
+          {
+            notificationMessage ? (
+              <Notification
+                isFailure={hasError}
+                message={notificationMessage}
+                handleOnClose={() => setNotificationMessage(null)}
+              />
+            ) : null
+          }
+          {
+            !isDataLoaded ? (
+              <LoadingIndicator />
+            ) : null
+          }
+          <div className="App-container">
             <Route
               exact
               path="/"
@@ -103,8 +106,8 @@ const App = () => {
                 handleDateChange={setAvailableSlotsDate}
               />
             </Route>
-          </Router>
-        </div>
+          </div>
+        </Router>
       </>
     </div>
   );
